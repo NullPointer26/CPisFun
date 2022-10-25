@@ -1,0 +1,54 @@
+#include<bits/stdc++.h>
+#define fast ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);srand(time(NULL));
+#define ll long long int
+#define ld long double
+#define vec vector<ll>
+#define pb push_back
+#define mp make_pair
+#define sz size()
+#define ff first
+#define ss second
+#define yes cout<<"YES"<<"\n";
+#define no cout<<"NO"<<"\n";
+#define inf LLONG_MAX
+#define f(i,a,b) for(i=a;i<b;i++)
+#define mod 1000000007
+using namespace std;
+void solve()
+{
+    ll n,i,m,j,index=-1,flag;
+    cin>>n;
+    ll a[n]={0};
+    f(i,0,n)cin>>a[i];
+    ll v[n]={0};
+    f(i,1,n+1)
+    {
+        f(j,0,n)
+        {
+            if(a[j]==i)
+            {
+                index=j;
+                while(index)
+                {
+                    if(v[index-1]==0&&a[index]<a[index-1])
+                    {
+                        swap(a[index],a[index-1]);
+                        index--;
+                        v[index]=1;
+                    }
+                    else break;
+                }
+            }
+        }
+    }
+    f(i,0,n)cout<<a[i]<<" ";
+    cout<<"\n";
+}
+int32_t main()
+{
+    fast
+    ll q=1;
+    cin>>q;
+    while(q--)solve();
+    return 0;
+}
